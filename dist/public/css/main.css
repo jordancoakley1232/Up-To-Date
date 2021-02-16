@@ -1,0 +1,799 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'News Cycle', sans-serif;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0.0;
+  }
+}
+
+#importedIcon {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+a:visited {
+  color: white;
+}
+
+.icons {
+  color: orange;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  font-family: 'News Cycle', sans-serif;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 1;
+}
+
+.loading-page .loading-container {
+  display: inline-block;
+  height: 150px;
+  -webkit-animation: rotate 3s linear infinite;
+          animation: rotate 3s linear infinite;
+}
+
+.loading-page .loading-container .loading-circle {
+  background-color: purple;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  -webkit-animation: grow 1.5s linear infinite;
+          animation: grow 1.5s linear infinite;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  margin: -10px;
+}
+
+.loading-page .loading-container .loading-circle:nth-child(2) {
+  background-color: palevioletred;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+.loading-page .loading-greeting {
+  font-size: 3rem;
+  -webkit-animation: pulsate 5s ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes grow {
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes grow {
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.nav-bar {
+  background: rgba(65, 47, 47, 0.801);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 3.5px solid;
+  border-bottom-color: orange;
+  font-weight: bold;
+}
+
+.nav-bar #time {
+  color: white;
+  margin-left: 2rem;
+  font-size: 1.75rem;
+}
+
+.nav-bar #greeting {
+  color: white;
+  margin-right: 2rem;
+  font-size: 1.75rem;
+}
+
+@media (max-width: 730px) {
+  .nav-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nav-bar #time {
+    display: none;
+  }
+}
+
+.display {
+  display: none;
+  opacity: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+  min-height: 100vh;
+  border-radius: 5%;
+  -webkit-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+
+.display .weather-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[2] 1.75fr 2fr;
+      grid-template-rows: repeat(2, 1fr) 1.75fr 2fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border-radius: 10px;
+  width: 25%;
+  color: white;
+  height: 500px;
+}
+
+.display .weather-container .weather-title {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 1 / 1 / 2 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 3rem;
+  background: rgba(65, 47, 47, 0.801);
+  border-top-right-radius: 4%;
+  border-top-left-radius: 4%;
+}
+
+.display .weather-container .weather-description {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 2 / 1 / 3 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-size: 2.5rem;
+  background: rgba(65, 47, 47, 0.801);
+}
+
+.display .weather-container .temp {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 3 / 1 / 4 / 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 6.5rem;
+  background: rgba(65, 47, 47, 0.801);
+}
+
+.display .weather-container .current-icon {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 3 / 2 / 4 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(65, 47, 47, 0.801);
+  color: orange;
+}
+
+.display .weather-container .low-temp-container {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 4 / 1 / 5 / 2;
+  background-color: rgba(69, 204, 230, 0.801);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom-left-radius: 13%;
+}
+
+.display .weather-container .low-temp-container h3 {
+  text-decoration: underline;
+  font-size: 2rem;
+}
+
+.display .weather-container .low-temp-container h4 {
+  font-size: 3rem;
+}
+
+.display .weather-container .high-temp-container {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 4 / 2 / 5 / 3;
+  background-color: rgba(230, 96, 69, 0.801);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.display .weather-container .high-temp-container h3 {
+  text-decoration: underline;
+  font-size: 2rem;
+}
+
+.display .weather-container .high-temp-container h4 {
+  font-size: 3rem;
+}
+
+.display .headline-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 3px solid none;
+  width: 36%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 500px;
+  border-radius: 2%;
+  background: rgba(51, 37, 37, 0.801);
+  color: white;
+  width: 36%;
+}
+
+.display .headline-container .headline-label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 3rem;
+}
+
+.display .headline-container .headline-img {
+  min-height: 314.219px;
+  width: 100%;
+  border-radius: 2.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.display .headline-container .headline-img:hover {
+  cursor: pointer;
+}
+
+.display .headline-container .headline-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.display .headline-container .headline-info .headline-title {
+  font-size: 1.35rem;
+  margin-left: 10px;
+  text-overflow: ellipsis;
+}
+
+.display .sports-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 3px solid none;
+  width: 36%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 500px;
+  border-radius: 2%;
+  background: rgba(51, 37, 37, 0.801);
+  color: white;
+  margin-left: 0;
+}
+
+.display .sports-container .sports-label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 3rem;
+}
+
+.display .sports-container .sports-img {
+  min-height: 314.219px;
+  width: 100%;
+  border-radius: 2.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.display .sports-container .sports-img:hover {
+  cursor: pointer;
+}
+
+.display .sports-container .sports-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.display .sports-container .sports-info .sports-title {
+  font-size: 1.35rem;
+  margin-left: 10px;
+  text-overflow: ellipsis;
+}
+
+.display .double-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 15%;
+  margin-top: 0;
+  height: 500px;
+  color: white;
+  border-radius: 3%;
+}
+
+.display .double-container .air-quality {
+  background: rgba(65, 47, 47, 0.801);
+  height: 50%;
+  width: 100%;
+  border-radius: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.display .double-container .air-quality .air-quality-label {
+  font-size: 2rem;
+}
+
+.display .double-container .air-quality .air-quality-tracker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: auto;
+  width: 100%;
+}
+
+.display .double-container .air-quality .air-quality-tracker .air-level {
+  font-size: 5rem;
+}
+
+.display .double-container .air-quality .air-quality-tracker .circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  -webkit-animation: pulsate 1s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  opacity: 0.0;
+}
+
+.display .double-container .air-quality .air-description {
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+.display .double-container .on-this-day {
+  background: rgba(65, 47, 47, 0.801);
+  height: 50%;
+  width: 100%;
+  border-radius: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+.display .double-container .on-this-day .on-this-day-label {
+  font-size: 2rem;
+}
+
+.display .double-container .on-this-day .on-this-day-text {
+  margin: auto;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.display .double-container .double-label {
+  font-size: 1.75rem;
+}
+
+.display .business-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 3px solid none;
+  width: 36%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 500px;
+  border-radius: 2%;
+  background: rgba(51, 37, 37, 0.801);
+  color: white;
+  width: 30%;
+}
+
+.display .business-container .business-label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 2.5rem;
+}
+
+.display .business-container .business-img {
+  min-height: 314.219px;
+  width: 100%;
+  border-radius: 2.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.display .business-container .business-img:hover {
+  cursor: pointer;
+}
+
+.display .business-container .business-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.display .business-container .business-info .business-title {
+  font-size: 1.35rem;
+  margin-left: 10px;
+  text-overflow: ellipsis;
+}
+
+.display .entertainment-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 3px solid none;
+  width: 36%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 500px;
+  border-radius: 2%;
+  background: rgba(51, 37, 37, 0.801);
+  color: white;
+  width: 30%;
+  margin-left: 0;
+}
+
+.display .entertainment-container .entertainment-label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 2.25rem;
+}
+
+.display .entertainment-container .entertainment-img {
+  min-height: 314.219px;
+  width: 100%;
+  border-radius: 2.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.display .entertainment-container .entertainment-img:hover {
+  cursor: pointer;
+}
+
+.display .entertainment-container .entertainment-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.display .entertainment-container .entertainment-info .entertainment-title {
+  font-size: 1.35rem;
+  margin-left: 10px;
+  text-overflow: ellipsis;
+}
+
+.display .quote-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 21.35%;
+  margin-top: 0;
+  height: 500px;
+  color: white;
+  background: rgba(51, 37, 37, 0.801);
+  border-radius: 3%;
+}
+
+.display .quote-container .quote-label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.75rem;
+}
+
+.display .quote-container .quote {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.display .quote-container .quote .quote-words {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 1050px) {
+  .display {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .display .weather-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .display .headline-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .display .sports-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+  .display .double-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 7;
+        -ms-flex-order: 6;
+            order: 6;
+  }
+  .display .business-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+  .display .entertainment-container {
+    width: 100%;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 6;
+        -ms-flex-order: 5;
+            order: 5;
+  }
+  .display .quote-container {
+    width: 100%;
+    height: 250px;
+    margin: 5px 0px;
+    -webkit-box-ordinal-group: 8;
+        -ms-flex-order: 7;
+            order: 7;
+  }
+}

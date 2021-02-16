@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&display=swap" rel="stylesheet">
+    <!-- Link CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/89c0b78562.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Up-To-Date</title>
+</head>
+
+<body>
+    <div class="loading-page">
+        <div class="loading-container">
+            <div class="loading-circle"></div>
+            <div class="loading-circle"></div>
+        </div>
+        <div class="loading-greeting">
+
+        </div>
+    </div>
+    <!-- Nav Bar -->
+    <nav class="nav-bar">
+        <div id="time"></div>
+        <div id="greeting">
+            <h4 class="nav-text">
+
+            </h4>
+        </div>
+    </nav>
+
+    <!-- Display -->
+    <div class="display">
+        <!-- Weather -->
+        <div class="weather-container">
+            <div class="weather-title"><i class="fas fa-angle-right icons"></i> Forecast </div>
+            <div class="weather-description"></div>
+            <div class="temp"></div>
+            <div class="current-icon icons"></div>
+            <!-- High Temp -->
+            <div class="low-temp-container">
+                <h3 class="low-title">Today's Low</h3>
+                <h4 class="low-temp"></h4>
+            </div>
+            <div class="high-temp-container">
+                <h3 class="high-title">Today's High</h3>
+                <h4 class="high-temp"></h4>
+            </div>
+        </div>
+        <!-- Headlines -->
+        <div class="headline-container">
+            <div class="headline-label"><span class="icon-span"><i class="fas fa-angle-right icons"></i></span> Today's
+                Headline</div>
+            <a href="" class="headline-image-link" target="_blank" rel="noopener noreferrer">
+                <div class="headline-img"></div>
+            </a>
+            <div class="headline-info">
+                <h3 class="headline-title">
+                </h3>
+            </div>
+        </div>
+
+        <!-- Sports Headline -->
+        <div class="sports-container">
+            <div class="sports-label"><i class="fas fa-angle-right icons"></i> Latest in Sports</div>
+            <a href="#" class="sports-image-link" rel="noopener noreferrer">
+                <div class="sports-img"></div>
+            </a>
+            <div class="sports-info">
+                <h3 class="sports-title">
+                </h3>
+            </div>
+        </div>
+
+        <!-- Double Container -->
+        <div class="double-container">
+            <!-- Air Quality -->
+            <div class="air-quality">
+                <div class="air-quality-label"><i class="fas fa-angle-right icons"></i>Air Quality</div>
+                <div class="air-quality-tracker">
+                    <div class="air-level"></div>
+                    <div class="circle"></div>
+                </div>
+                <span class="air-description"></span>
+            </div>
+            <!-- On this Day -->
+            <div class="on-this-day">
+                <div class="on-this-day-label"><i class="fas fa-angle-right icons"></i>On This Day</div>
+                <div class="on-this-day-text">
+
+                </div>
+                <span class="on-this-date"></span>
+
+            </div>
+
+        </div>
+
+        <!-- Business Headline -->
+        <div class="business-container">
+            <div class="business-label"><i class="fas fa-angle-right icons"></i> Latest in Business</div>
+            <a href="" class="business-image-link" target="_blank" rel="noopener noreferrer">
+                <div class="business-img"></div>
+            </a>
+            <div class="business-info">
+                <h3 class="business-title">
+                </h3>
+            </div>
+        </div>
+
+        <!-- Entertainment Headline -->
+        <div class="entertainment-container">
+            <div class="entertainment-label"><i class="fas fa-angle-right icons"></i></i> Entertainment News
+            </div>
+            <a href="" class="entertainment-image-link" target="_blank" rel="noopener noreferrer">
+                <div class="entertainment-img"></div>
+            </a>
+            <div class="entertainment-info">
+                <h3 class="entertainment-title">
+                </h3>
+            </div>
+        </div>
+
+        <div class="quote-container">
+            <div class="quote-label"><i class="fas fa-angle-right icons"> </i>Quote of the Day</div>
+            <div class="quote">
+                <h3 class="quote-words"></h3>
+                <p class="author"></p>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="countryList.js"></script>
+
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>

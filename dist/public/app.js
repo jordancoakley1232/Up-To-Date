@@ -1,3 +1,4 @@
+
 // Check if location is available, set the lat and lon(Global Variables).
 const clock = () => {
 
@@ -63,21 +64,30 @@ if ('geolocation' in navigator) {
 
         // Get City and Weather Location from Api
         const body = document.getElementsByTagName('body')[0];
-        const location = await (await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&APPID=7b6d85268e77e144023a070ce9aea6ea`)).json();
+        const location_api_url = `location/${lat},${long}`
+        const response = await fetch(location_api_url);
+        const location = await response.json();
+
         let countryCode = location.sys.country;
         let image;
         if (countryList[countryCode]) {
-            image = await (await fetch(`https://api.unsplash.com/photos/random/?client_id=WJyw7X8fMtsRyUnW55ypIcLMHbw4B50SOyC6SV4N73o&query=${countryList[countryCode]}&featured=true`)).json();
+            const image_api_url = `image/${countryList[countryCode]}`;
+            const response = await fetch(image_api_url);
+            image = await response.json();
         } else {
-            image = await (await fetch(`https://api.unsplash.com/photos/random/?client_id=WJyw7X8fMtsRyUnW55ypIcLMHbw4B50SOyC6SV4N73o&query=capital&featured=true`)).json();
+            const image_api_url = `/iamge`;
+            const response = await fetch(image_api_url);
+            image = await response.json();
         }
 
         body.style.backgroundImage = `url(${image.urls.full})`;
 
         // Fetch Air Quality
-        const airQualityObject = await (await fetch(`https://api.waqi.info/feed/geo:${lat};${long}/?token=71cfc68d57f9b0a4c4d28ba77bd8be7600efbf6c`)).json();
-        let airQuality = airQualityObject.data.aqi
-        // ;
+        const air_quality_api_url = `airquality/${lat},${long}`;
+        const air_quality_response = await fetch(air_quality_api_url);
+        const airQualityObject = await air_quality_response.json();
+        let airQuality = airQualityObject.data.aqi;
+
 
 
         let city = location.name;
@@ -130,7 +140,7 @@ if ('geolocation' in navigator) {
             airDescription.innerHTML = "(Unhealth)"
         } else if (airQuality <= 300) {
             circle.style.background = "#993399";
-            airDescription.innerHTML = "(Very Healthy)"
+            airDescription.innerHTML = "(Very Unhealthy)"
         } else {
             circle.style.background = "#990033";
             airDescription.innerHTML = "(Hazardous)"
@@ -173,7 +183,6 @@ getQuote();
 const updateHeadline = async (category) => {
     // Headline--------
     const endPoint = `/${category}`;
-    // const headlineResponse = await fetch(`${endPoint}`)
     const headlineResponse = await (await fetch(`${endPoint}`)).json();
     const articles = headlineResponse.articles.filter(article => {
         if (article.title && article.url && article.urlToImage) {
@@ -184,11 +193,8 @@ const updateHeadline = async (category) => {
     const title = articles[0].title;
     const titleLink = articles[0].url;
 
-    // Description
-    // const description = articles[0].description;
     // Image
     const imageUrl = articles[0].urlToImage;
-    console.log(imageUrl);
 
     // // Grab Elements
     const headline = document.querySelector(`.${category}-title`);
@@ -198,11 +204,7 @@ const updateHeadline = async (category) => {
     imageLink.setAttribute('target', '_blank');
 
     headline.innerHTML = title.link(titleLink);
-    // story.innerHTML = `${description.link(titleLink)}`;
-    // image.src = imageUrl;
-    // image.style.backgroundImage = `url(${imageUrl})`;
     image.style.backgroundImage = `url('${imageUrl}')`;
-    console.log(image.style.backgroundImage)
 
 };
 updateHeadline("headline");
@@ -218,7 +220,6 @@ const onThisDay = async () => {
     // End Point
     const endPoint = `./on-this-day`;
     const onThisDayData = await (await fetch(endPoint)).json();
-    // console.log(onThisDayDate);
     //Array of events. Filtered to only return objects that have a shorter text length
     let eventsArray = onThisDayData.data.Events.filter(events => {
         return events.text.length <= 120;

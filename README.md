@@ -1,3 +1,6 @@
+APP IS HOSTED ON HEORKU
+LINK - https://uptodate-app.herokuapp.com/
+
 # Up-To-Date
 This is a full stack application that I built to get the latest news, weather and other miscellaneous updates. 
 

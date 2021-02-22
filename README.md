@@ -1,4 +1,4 @@
-APP IS HOSTED ON HEORKU
+APP IS HOSTED ON HEROKU
 LINK - https://uptodate-app.herokuapp.com/
 
 # Up-To-Date
